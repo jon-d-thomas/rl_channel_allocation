@@ -21,7 +21,10 @@ def trainfn(lr1,y1,num_epis, num_iter):
         reward_iter_list=[]
         for iter1 in range(num_iter):
             s=a.convert_to_state()#convert initialised state to an integar
-            b = np.argmax(Q[s,:] + np.random.randn(1,10)*(1./(epis+1)))#select action
+            if np.random.rand()>(1./(epis+1)):
+                b = np.argmax(Q[s,:])#select action
+            else:
+                b= np.random.randint(0,10)
             reward=a.perform_action(b)#perform action
             s_new=a.convert_to_state()
             Q[s,b]=Q[s,b] + lr1 * (reward+ y1* np.max(Q[s_new,:])-Q[s,b])#perform update
