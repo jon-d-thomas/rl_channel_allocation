@@ -42,7 +42,7 @@ class Environment:
         if (x+c)>self.cap:
             x_poss=False
         if (t+y)>self.time:
-            y_poss=True
+            y_poss=False
         for j in range(x,x+c):
             for i in range(y,y+t):
                 if self.env[i,j]!=0:
