@@ -6,6 +6,7 @@ python -i <python-exe>.exe then you can have a look.
 """
 from environment import *
 import matplotlib.pyplot as plt
+from time import time
 
 def trainfn(lr1,y1,num_epis, num_iter):
     """
@@ -40,7 +41,9 @@ lr = 0.10
 y = 0.9#the discount factor
 #create env
 #initiate buffer
+start=time()
 Q,improvement,myc=trainfn(lr,y,num_epis,num_iter)
+print('Elapsed time is %s'%(time()-start))
 #plot the results
 plt.plot(improvement)
 plt.title('Q-learning average reward over episodes')
